@@ -7,7 +7,7 @@ REPO_URL = "https://github.com/onnudilol/django_tdd.git"
 def deploy():
     site_folder = '/home/{}/sites/{}'.format(env.user, env.host)
     source_folder = site_folder + '/source'
-    _create_directory_structure_if_necesseary(site_folder)
+    _create_directory_structure_if_necessary(site_folder)
     _get_latest_source(source_folder)
     _update_settings(source_folder, env.host)
     _update_static_files(source_folder)
