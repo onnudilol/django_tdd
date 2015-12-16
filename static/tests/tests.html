@@ -27,6 +27,11 @@ test("errors should be hidden on keypress", function () {
     equal($('.has-error').is(':visible'), false);
 });
 
+test("errors should be hidden on click", function () {
+   $('input').trigger('click');
+    equal($('.has-error').is(':visible'), false);
+});
+
 test("errors not hidden unless there is a keypress", function () {
    equal($('.has-error').is(':visible'), true);
 });
