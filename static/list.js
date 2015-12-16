@@ -1,7 +1,7 @@
-$('input').on('keypress', function () {
+$('input[name=text]').on('keypress', function () {
     $('.has-error').hide();
 });
 
-$('input').on('click', function () {
+$('input[name=text]').on('click', function () {
     $('.has-error').hide();
 });
