@@ -16,7 +16,12 @@
 
         <nav class="navbar navbar-default" role="navigation">
             <a class="navbar-brand" href="/">Superlists</a>
-            <a class="btn navbar-btn navbar-right" id="id_login" href="#">Sign in</a>
+            {% if user.email %}
+                <a class="btn navbar-btn navbar-right" id="id_logout" href="#">Log out</a>
+                <span class="navbar-text navbar-right">Logged in as {{ user.email }}</span>
+            {% else %}
+                <a class="btn navbar-btn navbar-right" id="id_login" href="#">Sign in</a>
+            {% endif %}
         </nav>
 
         <div class="row">
@@ -49,12 +54,12 @@
     <script src="/static/list.js"></script>
     <script src="/static/accounts.js"></script>
     <script>
-        /* global $, Superlists, navigator */
+        /*global $, Superlists, navigator */
         $(document).ready(function () {
             var user = "{{ user.email }}" || null;
-            var token = "{% csrf_token %}";
+            var token = "{{ csrf_token }}";
             var urls = {
-                login: "TODO",
+                login: "{% url 'persona_login' %}",
                 logout: "TODO"
             };
             Superlists.Accounts.initialize(navigator, user, token, urls);
