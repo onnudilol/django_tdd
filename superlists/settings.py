@@ -116,6 +116,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # This setting is changed by the deploy script
-DOMAIN = 'localhost'
+DOMAIN = "localhost"
 
 ALLOWED_HOSTS = [DOMAIN]
