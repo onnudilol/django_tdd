@@ -1,9 +1,11 @@
 import requests
+import logging
 from django.contrib.auth import get_user_model
 from django.conf import settings
 
 PERSONA_VERIFY_URL = 'https://verifier.login.persona.org/verify'
 User = get_user_model()
+logger = logging.getLogger(__name__)
 
 
 class PersonaAuthenticationBackend:
@@ -21,7 +23,10 @@ class PersonaAuthenticationBackend:
                 return User.objects.get(email=email)
 
             except User.DoesNotExist:
+
                 return User.objects.create(email=email)
+        else:
+            logger.warning('Persona says no. Json was: {}'.format(response.json()))
 
     def get_user(self, email):
         try:
