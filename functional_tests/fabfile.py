@@ -6,7 +6,7 @@ def _get_base_folder(host):
 
 
 def _get_manage_dot_py(host):
-    return '{path}/virtualenv/bin/python {path}/source/manage.py'.format(
+    return '~/.virtualenvs/lists/bin/python {path}/source/manage.py'.format(
         path=_get_base_folder(host)
     )
 
