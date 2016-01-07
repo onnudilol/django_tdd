@@ -2,7 +2,7 @@ from fabric.api import env, run
 
 
 def _get_base_folder(host):
-    return '~/sites' + host
+    return '~/sites/' + host
 
 
 def _get_manage_dot_py(host):
