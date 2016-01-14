@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
+from django.http.response import HttpResponse
 
 from lists.models import List
 from lists.forms import ItemForm, ExistingListItemForm, NewListForm
@@ -38,3 +39,8 @@ def new_list(request):
 def my_lists(request, email):
     owner = User.objects.get(email=email)
     return render(request, 'lists/my_lists.html', {'owner': owner})
+
+
+def share_list(request, list_id):
+    list_ = List.objects.get(id=list_id)
+    return redirect(list_)
