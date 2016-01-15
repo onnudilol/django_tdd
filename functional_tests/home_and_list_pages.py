@@ -1,3 +1,5 @@
+from selenium.webdriver.common.keys import Keys
+
 ITEM_INPUT_ID = 'id_text'
 
 
@@ -26,7 +28,7 @@ class HomePage:
         self.test.browser.find_element_by_link_text('My lists').send_keys(Keys.RETURN)
         self.test.wait_for(lambda: self.test.assertEqual(
                 self.test.browser.find_element_by_tag_name('h1').text,
-                'My lists'))
+                'My Lists'))
 
 
 class ListPage:

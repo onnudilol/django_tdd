@@ -17,10 +17,31 @@
 {% endblock %}
 
 {% block extra_content %}
-    <div>
-        <form method="POST" action="{% url 'share_list' list.id %}">
-            {% csrf_token %}
-            <input name="email" placeholder="your-friend@example.com" />
-        </form>
-    </div>
+
+    {% if list.owner %}
+        <h3>List owner:</h3>
+        <p id="id_list_owner">{{ list.owner.email }}</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+
+        <div>
+            <h3>List shared with:</h3>
+            <ul>
+                {% for user in list.shared_with.all %}
+                    <li class="list-sharee">{{ user.email }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h3>Share your list</h3>
+                <form method="POST" action="{% url 'share_list' list.id %}">
+                    {% csrf_token %}
+                    <input name="email" placeholder="your-friend@example.com" />
+                </form>
+        </div>
+
+    {% endif %}
+
 {% endblock %}
